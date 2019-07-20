@@ -1,28 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
-/* Menu Wrap */
-.menu-wrap {
-  font-family: 'Roboto', sans-serif;
-
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1024;
-}
-
+/* Toggler */
 .toggler {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 2048;
-  cursor: pointer;
-  width: 50px;
-  height: 50px;
-  opacity: 0;
-}
-
-.hamburger {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 1024;
@@ -33,65 +13,53 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
-.hamburger__line,
-.hamburger__line::before,
-.hamburger__line::after {
+.toggler__line,
+.toggler__line::before,
+.toggler__line::after {
   width: 100%;
   height: 2px;
   background-color: #fff;
 }
 
-.hamburger__line {
+.toggler__line {
   position: relative;
   transition: transform 0.25s linear;
 }
 
-.hamburger__line::before,
-.hamburger__line::after {
+.toggler__line::before,
+.toggler__line::after {
   content: '';
   position: absolute;
   z-index: 1024;
 }
 
-.hamburger__line::before {
+.toggler__line::before {
   top: -10px;
 }
 
-.hamburger__line::after {
+.toggler__line::after {
   top: 10px;
 }
 
-.toggler:checked + .hamburger > .hamburger__line {
+.toggler--is-toggled .toggler__line {
   transform: rotate(135deg);
 }
 
-.toggler:checked + .hamburger > .hamburger__line::before,
-.toggler:checked + .hamburger > .hamburger__line::after {
+.toggler--is-toggled .toggler__line::before,
+.toggler--is-toggled .toggler__line::after {
   top: 0;
   transform: rotate(90deg);
 }
 
-.toggler:checked:hover + .hamburger > .hamburger__line {
+.toggler--is-toggled:hover .hamburger__line {
   transform: rotate(225deg);
 }
 
-.toggler:checked ~ .menu {
-  visibility: visible;
-}
-
-.toggler:checked ~ .menu > div {
-  transform: scale(1);
-  transition-duration: 0.75s;
-}
-
-.toggler:checked ~ .menu > div > div {
-  opacity: 1;
-  transition: opacity 0.25s ease;
-}
-
-.menu {
+/* Hamburger Menu */
+.hamburger-menu {
   position: fixed;
   top: 0;
   left: 0;
@@ -104,7 +72,7 @@
   justify-content: center;
 }
 
-.menu > div {
+.hamburger-menu__overlay {
   background-color: rgba(24, 39, 51, 0.85);
   border-radius: 50%;
   width: 200vw;
@@ -117,7 +85,7 @@
   transition: all 0.25s ease;
 }
 
-.menu > div > div {
+.hamburger-menu__content {
   text-align: center;
   max-width: 90vw;
   max-height: 100vh;
@@ -125,3 +93,39 @@
   transition: opacity 0.25s ease;
 }
 
+.hamburger-menu--is-shown {
+  visibility: visible;
+}
+
+.hamburger-menu--is-shown .hamburger-menu__overlay {
+  transform: scale(1);
+  transition-duration: 0.75s;
+}
+
+.hamburger-menu--is-shown .hamburger-menu__content {
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+
+/* Nav */
+.nav {
+  font-family: 'Roboto', sans-serif;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.nav__link {
+  display: block;
+  padding: 0.25rem 0.5rem;
+  width: 100%;
+  font-size: 1.5rem;
+  color: #fff;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.25s ease;
+}
+
+.nav__link:hover,
+.nav__link--is-active {
+  border-color: #fff;
+}
