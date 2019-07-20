@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+/* Menu Wrap */
+.menu-wrap {
+  font-family: 'Roboto', sans-serif;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1024;
+}
+
+.toggler {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2048;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  opacity: 0;
+}
+
+.hamburger {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1024;
+  width: 60px;
+  height: 60px;
+  padding: 1rem;
+  background-color: rgba(13, 110, 139, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hamburger__line,
+.hamburger__line::before,
+.hamburger__line::after {
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+}
+
+.hamburger__line {
+  position: relative;
+  transition: transform 0.25s linear;
+}
+
+.hamburger__line::before,
+.hamburger__line::after {
+  content: '';
+  position: absolute;
+  z-index: 1024;
+}
+
+.hamburger__line::before {
+  top: -10px;
+}
+
+.hamburger__line::after {
+  top: 10px;
+}
+
+.toggler:checked + .hamburger > .hamburger__line {
+  transform: rotate(135deg);
+}
+
+.toggler:checked + .hamburger > .hamburger__line::before,
+.toggler:checked + .hamburger > .hamburger__line::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+.toggler:checked:hover + .hamburger > .hamburger__line {
+  transform: rotate(225deg);
+}
+
+.toggler:checked ~ .menu {
+  visibility: visible;
+}
+
+.toggler:checked ~ .menu > div {
+  transform: scale(1);
+  transition-duration: 0.75s;
+}
+
+.toggler:checked ~ .menu > div > div {
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu > div {
+  background-color: rgba(24, 39, 51, 0.85);
+  border-radius: 50%;
+  width: 200vw;
+  height: 200vw;
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0);
+  transition: all 0.25s ease;
+}
+
+.menu > div > div {
+  text-align: center;
+  max-width: 90vw;
+  max-height: 100vh;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
