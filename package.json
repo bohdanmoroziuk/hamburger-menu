@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "inferno": "^7.1.13",
+    "inferno-router": "^7.1.13",
     "inferno-scripts": "7.0.4"
   },
   "scripts": {
