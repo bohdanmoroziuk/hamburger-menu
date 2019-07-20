@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from 'inferno-router';
 import * as serviceWorker from './serviceWorker';
 
 import App from './App';
-import './index.css';
+import './styles/index.css';
 
 render(
   <Router>
