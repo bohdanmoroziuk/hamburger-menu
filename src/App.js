@@ -1,8 +1,12 @@
-import HamburgerMenu from './components/menu/HamburgerMenu';
+import HamburgerMenu from './components/HamburgerMenu';
+
+import menu from './config/menu';
 
 const App = () => (
   <div className="app">
-    <HamburgerMenu />
+    <HamburgerMenu
+      menu={menu}
+    />
   </div>
 );
 
