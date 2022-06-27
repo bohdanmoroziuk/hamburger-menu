@@ -1,6 +1,7 @@
 {
   "name": "hamburger-menu",
   "version": "0.1.0",
+  "description": "Responsive hamburger menu created using Inferno.js and pure CSS",
   "private": true,
   "dependencies": {
     "classnames": "^2.2.6",
